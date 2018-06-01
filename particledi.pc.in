@@ -1,5 +1,5 @@
 Name: particledi
-Description: A simple Dependency Injection helper
+Description: A simple Dependency Injection helper.
 Version: @PROJECT_VERSION@
 Cflags: -I@CMAKE_INSTALL_PREFIX@/include/
 Libs: -L@CMAKE_INSTALL_PREFIX@/lib/ -lparticledi

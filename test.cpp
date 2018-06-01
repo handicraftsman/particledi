@@ -2,30 +2,46 @@
 
 #include <iostream>
 
-class foo : public particledi::dependency {
+class print_service : public particledi::dependency {
 public:
-  foo(std::string _bar)
-  : bar(_bar)
+  print_service() {
+    std::cout << "print_service initialized" << std::endl;
+  }
+
+  virtual ~print_service() {
+    std::cout << "print_service destroyed" << std::endl;
+  }
+
+  void print(std::string msg) {
+    std::cout << msg << std::endl;
+  }
+};
+
+class a_class {
+public:
+  a_class(particledi::dm_ptr dm)
+  : ps(dm->get<print_service>())
   {
-    std::cout << "hi" << std::endl;
+    std::cout << "a_class initialized" << std::endl;
   }
 
-  virtual ~foo() {
-    std::cout << "bye" << std::endl;
+  ~a_class() {
+    std::cout << "a_class destroyed" << std::endl;
   }
 
-  void print_message() {
-    std::cout << bar << std::endl;
+  void do_something() {
+    ps->print("Hello, World!");
   }
 
-  std::string bar;
+  std::shared_ptr<print_service> ps;
 };
 
 int main(int argc, char** argv) {
-  std::shared_ptr<particledi::dm> dm = particledi::dm::create();
-  dm->set("foo", new foo("Hello, World!"));
+  particledi::dm_ptr dm = particledi::dm::create();
+  dm->set<print_service>(new print_service());
 
-  dm->get<foo>("foo")->print_message();
+  a_class c(dm);
+  c.do_something();
 
   return 0;
 }
