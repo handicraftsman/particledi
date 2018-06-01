@@ -22,10 +22,10 @@ public:
 };
 
 int main(int argc, char** argv) {
-  particledi dm;
-  dm.set("foo", new foo("Hello, World!"));
+  std::shared_ptr<particledi::dm> dm = particledi::dm::create();
+  dm->set("foo", new foo("Hello, World!"));
 
-  dm.get<foo>("foo")->print_message();
+  dm->get<foo>("foo")->print_message();
 
   return 0;
 }

@@ -47,7 +47,7 @@ public:
 };
 
 int main(int argc, char** argv) {
-  particledi dm; // creates a dependency manager (or a service holder)
+  particledi::dm dm; // creates a dependency manager
 
   dm.set("foo", new foo("Hello, World")); // registers an instance of foo as a foo
   
@@ -55,6 +55,18 @@ int main(int argc, char** argv) {
 
   return 0; // all objects are destroyed properly because they're stored in std::shared_ptr instances
 }
+
+// To use it as a dependency itself:
+int main(int argc, char** argv) {
+  std::shared_ptr<particledi::dm> dm = particledi::dm::create();
+  dm->set("foo", new foo("Hello, World!"));
+
+  dm->get<foo>("foo")->print_message();
+
+  return 0;
+}
+
+
 ```
 
 Build and run this to see this:
