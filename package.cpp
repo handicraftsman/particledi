@@ -4,7 +4,7 @@ using namespace PPM::Utils;
 
 PPM_PACKAGE(p) {
   p->name("particledi");
-  p->version(PPM::Version("v0.3.1"));
+  p->version(PPM::Version("v0.3.2"));
   p->description("A simple Dependency Injection helper");
   p->github(PPM::GitHub("handicraftsman", "particledi"));
   p->license(PPM::License("MIT", "https://github.com/handicraftsman/particledi/blob/master/LICENSE.txt"));
