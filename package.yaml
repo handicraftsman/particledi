@@ -1,0 +1,15 @@
+name: particledi
+version: 0.3.3
+description: A simple dependency injection helper
+
+git-repo: "https://github.com/handicraftsman/particledi"
+git-tag: v0.3.3
+
+targets:
+  particledi:
+    type: library
+    sources:
+      - "particledi.cpp"
+    include-dirs:
+      - "."
+    cpp: "c++11"

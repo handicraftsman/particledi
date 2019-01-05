@@ -18,6 +18,8 @@ as a dependency in any build system which supports pkg-config. This will be
 `dependency('particledi')` in Meson
 and `pkg_search_module(ParticleDI REQUIRED particledi)` in CMake.
 
+This package is also available in dumbcpm as `particledi`. Target name is `particledi` too.
+
 # A simple example
 
 ```cpp
